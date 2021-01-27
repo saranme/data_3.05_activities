@@ -50,11 +50,9 @@ SELECT account_id, COUNT(trans_id) n_trans
 FROM trans
 WHERE account_id IN (SELECT account_id
 					FROM account
-					WHERE district_id IN (SELECT district_id
-										FROM account
-										WHERE district_id IN (SELECT A1 
-															FROM district 
-															WHERE A3 = 'central Bohemia')))
+					WHERE district_id IN (SELECT A1 
+										  FROM district 
+										  WHERE A3 = 'central Bohemia'))
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 1
